@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MegaDesk2._0.Properties
+namespace MegaDesk1._0.Properties
 {
 
 

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MegaDesk2._0
+namespace MegaDesk1._0
 {
     public partial class MainMenu : Form
     {
