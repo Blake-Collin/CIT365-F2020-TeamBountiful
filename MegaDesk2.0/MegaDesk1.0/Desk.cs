@@ -111,27 +111,27 @@ namespace MegaDesk1._0
 
 
         //Getters for limiters
-        public int GetMaxDepth()
+        public static int GetMaxDepth()
         {
             return MAXIMUMDEPTH;
         }
-        public int GetMinDepth()
+        public static int GetMinDepth()
         {
             return MINIMUUMDEPTH;
         }
-        public int GetMaxWidth()
+        public static int GetMaxWidth()
         {
             return MAXIMUMWIDTH;
         }
-        public int GetMinWdith()
+        public static int GetMinWdith()
         {
             return MINIMUUMWIDTH;
         }
-        public int GetMaxDrawers()
+        public static int GetMaxDrawers()
         {
             return MAXIMUMDRAWER;
         }
-        public int GetMinDrawers()
+        public static int GetMinDrawers()
         {
             return MINIMUMDRAWER;
         }

@@ -14,7 +14,6 @@ namespace MegaDesk1._0
     public partial class AddQuote : Form
     {
         private static int[] DAYS = new int[] { 14, 3, 5, 7 };
-        private static Desk DESKVARS = new Desk();
         private DeskQuote deskQuote;
 
         public AddQuote()
@@ -28,10 +27,9 @@ namespace MegaDesk1._0
 
             //Set Labels
 
-            depthLabel.Text = "Desk Depth: (" + DESKVARS.GetMinDepth() + "\"-" + DESKVARS.GetMaxDepth() + "\")";
-            widthLabel.Text = "Desk Width: (" + DESKVARS.GetMinWdith() + "\"-" + DESKVARS.GetMaxWidth() + "\")";
-            drawLabel.Text = "Number of Drawers: (" + DESKVARS.GetMinDrawers() + "-" + DESKVARS.GetMaxDrawers() + ")";
-
+            depthLabel.Text = "Desk Depth: (" + Desk.GetMinDepth() + "\"-" + Desk.GetMaxDepth() + "\")";
+            widthLabel.Text = "Desk Width: (" + Desk.GetMinWdith() + "\"-" + Desk.GetMaxWidth() + "\")";
+            drawLabel.Text = "Number of Drawers: (" + Desk.GetMinDrawers() + "-" + Desk.GetMaxDrawers() + ")";
         }
 
         private bool checkValid()
@@ -105,7 +103,7 @@ namespace MegaDesk1._0
                     DeskMaterial material;
                     Enum.TryParse<DeskMaterial>(materialComboBox.SelectedValue.ToString(), out material);
                     deskQuote = new DeskQuote(nameTextBox.Text, int.Parse(widthNum.Text), int.Parse(depthNum.Text), int.Parse(drawersNum.Text), material, (int)daysComboBox.SelectedItem);
-
+                    MainMenu.GetQuotes().Add(deskQuote);
                     DisplayQuote quote = new DisplayQuote(deskQuote);
                     quote.Tag = this;
                     quote.Show(this);
@@ -134,12 +132,12 @@ namespace MegaDesk1._0
             int temp;
             if (int.TryParse(depthNum.Text, out temp)) 
             { 
-                if (temp < DESKVARS.GetMinDepth())
+                if (temp < Desk.GetMinDepth())
                 {
                     depthNum.BackColor = Color.Red;
                     errorLabel.Text = "Depth below minimum allowance.";
                 }
-                else if (temp > DESKVARS.GetMaxDepth())
+                else if (temp > Desk.GetMaxDepth())
                 {
                     depthNum.BackColor = Color.Red;
                     errorLabel.Text = "Depth above maximum allowance.";
@@ -157,12 +155,12 @@ namespace MegaDesk1._0
             int temp;
             if (int.TryParse(widthNum.Text, out temp))
             {
-                if (temp < DESKVARS.GetMinWdith())
+                if (temp < Desk.GetMinWdith())
                 {
                     widthNum.BackColor = Color.Red;
                     errorLabel.Text = "*Width below minimum allowance.";
                 }
-                else if (temp > DESKVARS.GetMaxWidth())
+                else if (temp > Desk.GetMaxWidth())
                 {
                     widthNum.BackColor = Color.Red;
                     errorLabel.Text = "*Width above maximum allowance.";
@@ -180,12 +178,12 @@ namespace MegaDesk1._0
             int temp;
             if (int.TryParse(drawersNum.Text, out temp))
             {
-                if (temp < DESKVARS.GetMinDrawers())
+                if (temp < Desk.GetMinDrawers())
                 {
                     drawersNum.BackColor = Color.Red;
                     errorLabel.Text = "*Drawers count below minimum.";
                 }
-                else if (temp > DESKVARS.GetMaxDrawers())
+                else if (temp > Desk.GetMaxDrawers())
                 {
                     drawersNum.BackColor = Color.Red;
                     errorLabel.Text = "*Drawers count above maximum.";

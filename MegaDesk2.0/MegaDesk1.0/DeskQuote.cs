@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -72,55 +73,45 @@ namespace MegaDesk1._0
 
         private decimal rushCalculation(int area)
         {
-            if(productionDays == 3)
+            int x, y;
+
+
+            switch(productionDays)
             {
-                if(area < 1000)
-                {
-                    return 60;
-                }
-                else if(area <= 2000 && area >= 1000)
-                {
-                    return 70;
-                }
-                else
-                {
-                    return 80;
-                }
+                case 3:
+                    x = 0;
+                    break;
+                case 5:
+                    x = 1;
+                    break;
+                case 7:
+                    x = 2;
+                    break;
+                default:
+                    x = -1;
+                    break;
+
             }
-            else if(productionDays == 5)
+
+            if (area < 1000)
             {
-                if (area < 1000)
-                {
-                    return 40;
-                }
-                else if (area <= 2000 && area >= 1000)
-                {
-                    return 50;
-                }
-                else
-                {
-                    return 60;
-                }
+                y = 0;
             }
-            else if(productionDays == 7)
+            else if (area <= 2000 && area >= 1000)
             {
-                if (area < 1000)
-                {
-                    return 30;
-                }
-                else if (area <= 2000 && area >= 1000)
-                {
-                    return 35;
-                }
-                else
-                {
-                    return 40;
-                }
+                y = 1;
+            }
+            else 
+            {
+                y = 2;
+            }
+
+            if (x != -1)
+            {
+                return rushPrices[x, y];
             }
             else
-            {
                 return 0;
-            }            
         }
 
         private decimal materialCost()
