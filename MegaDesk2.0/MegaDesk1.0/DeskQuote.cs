@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MegaDesk1._0
 {
@@ -133,6 +136,55 @@ namespace MegaDesk1._0
             }            
         }
 
+        //Search Quote Section
+      public static DataTable getQuotesMaterial(string material)
+
+        {
+            DataSet dataSet = new DataSet();
+            DataTable dataTable = new DataTable();
+
+            //Try to open JSON file for reading
+            try
+            {
+                var sourceJson = File.ReadAllText("quotes.json");
+                dataSet = JsonConvert.DeserializeObject<DataSet>(sourceJson);
+
+                DataTable dataQuotes = dataSet.Tables["quotes"];
+                if (dataQuotes.Rows.Count > 0)
+                {
+                    //Let's find some stuff to display
+                    string searchquery;
+                    searchquery = "material = '" + material + "'";
+                    DataRow[] dataRows = dataTable.Select(searchquery);
+                    if (dataRows.Length > 0)
+                    {
+                        dataTable = dataRows.CopyToDataTable();
+
+                        //Column Names
+                        //Need to confirm this is the correct order in our JSON
+                        //an update with the remaining columns once we do
+                        dataTable.Columns[0].ColumnName = "Customer ID";
+                        dataTable.Columns[1].ColumnName = "Customer Name";
+                        dataTable.Columns[2].ColumnName = "Date of Original Quote";
+
+                    }
+                    //If nothing in the search results, throw error
+                    else 
+                    {
+                        MessageBox.Show("No results found, check query and Json", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+
+            }
+            catch (JsonReaderException)
+            {
+                MessageBox.Show("The source Json file is corrputed or missing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dataTable;
+
+        }
 
         //Getters and Setters
         //May need to add error handling depending on name types unless we are fine with numbers

@@ -23,5 +23,11 @@ namespace MegaDesk1._0
             main.Show();
             Hide();
         }
+
+        private void btnSearchQuotes_Click(object sender, EventArgs e)
+        {
+            //Send the information to be searched
+            dataGridSearchQuotes.DataSource = DeskQuote.getQuotesMaterial(searchQuoteMaterialDropdown.Text);
+        }
     }
 }
