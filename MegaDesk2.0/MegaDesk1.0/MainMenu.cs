@@ -3,12 +3,15 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+
 
 namespace MegaDesk1._0
 {
@@ -22,9 +25,39 @@ namespace MegaDesk1._0
         {
             InitializeComponent();
             //Load JSon
+            var quotesFile = @"quotes.json";
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
 
+            // read existing quotes
+            if ( File.Exists(quotesFile))
+            {
+                using (StreamReader reader = new StreamReader(quotesFile))
+                {
+                    // load quotes
+                    string quotes = reader.ReadToEnd();
 
-            //quotes = JSon.decode(quotesSaved.json);
+                    if (quotes.Length >0)
+                    {
+                        // deserialize
+                        deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+                    }
+
+                    // add a quote
+                    deskQuotes.Add(deskQuote);
+                }
+
+                // save
+                SaveQuotes(deskQuotes);
+            }
+            else
+            {
+                // create new quote list
+                deskQuotes = new List<DeskQuote> { deskQuote };
+
+                SaveQuotes(deskQuotes);
+            }
+
+            
             //*****
         }
 
@@ -62,7 +95,7 @@ namespace MegaDesk1._0
         private void exitButton_Click(object sender, EventArgs e)
         {
             //Save JSON
-
+           
 
             //********
             Close();
