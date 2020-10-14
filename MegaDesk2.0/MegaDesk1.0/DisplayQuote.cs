@@ -30,7 +30,7 @@ namespace MegaDesk1._0
             widthLabel.Text = widthLabel.Text + " " + deskQuote.GetDesk().GetDeskWidth();
             drawLabel.Text = drawLabel.Text + " " + deskQuote.GetDesk().GetNumOfDrawers();
             materialLabel.Text = materialLabel.Text + " " + deskQuote.GetDesk().GetDeskMaterial().ToString();
-            daysLabel.Text = daysLabel.Text + " " + deskQuote.GetProductionDdays();
+            daysLabel.Text = daysLabel.Text + " " + deskQuote.GetProductionDays();
             priceLabel.Text = priceLabel.Text + " " + string.Format("{0:C}", deskQuote.GetQuoteAmount());
             dateLabel.Text = dateLabel.Text + " " + deskQuote.GetCompletionDate().ToString("MM/dd/yyyy");
         }

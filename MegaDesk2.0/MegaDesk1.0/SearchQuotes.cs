@@ -15,6 +15,7 @@ namespace MegaDesk1._0
         public SearchQuotes()
         {
             InitializeComponent();
+            searchQuoteMaterialDropdown.DataSource = Enum.GetValues(typeof(DeskMaterial));
         }
 
         private void SearchQuotes_FormClosed(object sender, FormClosedEventArgs e)
@@ -26,8 +27,24 @@ namespace MegaDesk1._0
 
         private void btnSearchQuotes_Click(object sender, EventArgs e)
         {
-            //Send the information to be searched
-            dataGridSearchQuotes.DataSource = DeskQuote.getQuotesMaterial(searchQuoteMaterialDropdown.Text);
+            DeskMaterial material;
+            Enum.TryParse<DeskMaterial>(searchQuoteMaterialDropdown.SelectedValue.ToString(), out material);
+
+            DataTable table = ViewAllQuotes.BasicTable();
+
+            foreach(DeskQuote quote in MainMenu.GetQuotes())
+            {
+                if(quote.GetDesk().GetDeskMaterial() == material)
+                {                    
+                    table.Rows.Add(ViewAllQuotes.CreateRow(quote, table));
+                }
+            }
+
+            dataGridSearchQuotes.DataSource = table;
+            dataGridSearchQuotes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridSearchQuotes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridSearchQuotes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
         }
     }
 }

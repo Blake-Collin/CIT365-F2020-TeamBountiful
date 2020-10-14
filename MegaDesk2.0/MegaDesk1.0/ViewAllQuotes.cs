@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace MegaDesk1._0
 {
@@ -18,19 +16,20 @@ namespace MegaDesk1._0
         {
             InitializeComponent();
 
-            //different option
-            using (StreamReader file = File.OpenText("quotes.txt"))
-            using (JsonTextReader reader = new JsonTextReader(file))
-            {
-                JObject oj = (JObject)JToken.ReadFrom(reader);
-            }
-            var quotes = JsonConvert.DeserializeObject("quotes.txt");
-            DataGridView.DataSource = quotes;
-            //another option
+            List<DeskQuote> quotes = MainMenu.GetQuotes();
 
-            DataTable dt = (DataTable)JsonConvert.DeserializeObject("quotes.txt");
-            var list = new BindingList<DeskQuote>(DeskQuote.dataQuotes);
-            DataGridView.DataSource = list;
+            DataTable table = BasicTable();
+
+            foreach (DeskQuote quote in quotes)
+            {                
+                table.Rows.Add(CreateRow(quote, table));
+            }
+
+            dataGridView.DataSource = table;
+            dataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.AllowUserToAddRows = false;
         }
 
         private void ViewAllQuotes_FormClosed(object sender, FormClosedEventArgs e)
@@ -38,6 +37,30 @@ namespace MegaDesk1._0
             MainMenu main = (MainMenu)Tag;
             main.Show();
             Hide();
+        }
+
+        public static DataTable BasicTable()
+        {
+            DataTable table = new DataTable();
+
+            table.Columns.Add(new DataColumn("Customer Name", typeof(string)));
+            table.Columns.Add(new DataColumn("Quote Amount", typeof(decimal)));
+            table.Columns.Add(new DataColumn("Date of Completition", typeof(DateTime)));
+            table.Columns.Add(new DataColumn("Production Days", typeof(int)));
+            table.Columns.Add(new DataColumn("Desk", typeof(Desk)));
+
+            return table;
+        }
+
+        public static DataRow CreateRow(DeskQuote quote, DataTable table)
+        {            
+            DataRow row = table.NewRow();
+            row["Customer Name"] = quote.GetCustomerName();
+            row["Quote Amount"] = quote.GetQuoteAmount();
+            row["Date of Completition"] = quote.GetCompletionDate();
+            row["Production Days"] = quote.GetProductionDays();
+            row["Desk"] = quote.GetDesk();
+            return row;
         }
 
         private void ViewAllQuotes_Load(object sender, EventArgs e)

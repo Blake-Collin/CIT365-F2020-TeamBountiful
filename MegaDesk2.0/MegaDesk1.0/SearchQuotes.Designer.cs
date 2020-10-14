@@ -39,13 +39,7 @@
             // searchQuoteMaterialDropdown
             // 
             this.searchQuoteMaterialDropdown.FormattingEnabled = true;
-            this.searchQuoteMaterialDropdown.Items.AddRange(new object[] {
-            "Laminate",
-            "Oak",
-            "Rosewood",
-            "Veneer",
-            "Pine"});
-            this.searchQuoteMaterialDropdown.Location = new System.Drawing.Point(162, 122);
+            this.searchQuoteMaterialDropdown.Location = new System.Drawing.Point(475, 29);
             this.searchQuoteMaterialDropdown.Name = "searchQuoteMaterialDropdown";
             this.searchQuoteMaterialDropdown.Size = new System.Drawing.Size(121, 21);
             this.searchQuoteMaterialDropdown.TabIndex = 0;
@@ -53,7 +47,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 130);
+            this.label1.Location = new System.Drawing.Point(370, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 1;
@@ -61,7 +55,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(79, 53);
+            this.label2.Location = new System.Drawing.Point(76, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(216, 42);
             this.label2.TabIndex = 2;
@@ -71,7 +65,7 @@
             // 
             // btnSearchQuotes
             // 
-            this.btnSearchQuotes.Location = new System.Drawing.Point(162, 175);
+            this.btnSearchQuotes.Location = new System.Drawing.Point(427, 71);
             this.btnSearchQuotes.Name = "btnSearchQuotes";
             this.btnSearchQuotes.Size = new System.Drawing.Size(75, 23);
             this.btnSearchQuotes.TabIndex = 3;
@@ -86,9 +80,9 @@
             this.dataGridSearchQuotes.AllowUserToResizeColumns = false;
             this.dataGridSearchQuotes.AllowUserToResizeRows = false;
             this.dataGridSearchQuotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridSearchQuotes.Location = new System.Drawing.Point(346, 48);
+            this.dataGridSearchQuotes.Location = new System.Drawing.Point(12, 118);
             this.dataGridSearchQuotes.Name = "dataGridSearchQuotes";
-            this.dataGridSearchQuotes.Size = new System.Drawing.Size(240, 150);
+            this.dataGridSearchQuotes.Size = new System.Drawing.Size(603, 150);
             this.dataGridSearchQuotes.TabIndex = 4;
             // 
             // SearchQuotes
@@ -101,6 +95,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchQuoteMaterialDropdown);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(643, 319);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(643, 319);
             this.Name = "SearchQuotes";
             this.Text = "Search Quotes";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SearchQuotes_FormClosed);

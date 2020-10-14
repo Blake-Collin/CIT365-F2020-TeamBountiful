@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,12 +12,16 @@ using System.Windows.Forms;
 namespace MegaDesk1._0
 {
 
+    [JsonObject(MemberSerialization.OptIn)]
     public class DeskQuote
     {
         //Variables
+        [JsonProperty]
         private Desk desk;
+        [JsonProperty]
         private string customerName;
         private decimal quoteAmount;
+        [JsonProperty]
         private int productionDays;
         private DateTime completionDate;
 
@@ -35,16 +38,16 @@ namespace MegaDesk1._0
             calculateDate();
         }
 
-        public DeskQuote(string inName, Desk inDesk, int inProductionDays)
+        [JsonConstructor]
+        public DeskQuote(string customerName, Desk desk, int productionDays)
         {
-            desk = inDesk; //All Error handling inside should be valid/safe
-            setCustomerName(inName);
-            setProductionDays(inProductionDays);
+            this.desk = desk; //All Error handling inside should be valid/safe
+            setCustomerName(customerName);
+            setProductionDays(productionDays);
             calculateQuote();
             calculateDate();
         }
-
-        
+               
         //Quote calculations
         private void calculateDate()
         {
@@ -136,56 +139,6 @@ namespace MegaDesk1._0
             }            
         }
 
-        //Search Quote Section
-      public static DataTable getQuotesMaterial(string material)
-
-        {
-            DataSet dataSet = new DataSet();
-            DataTable dataTable = new DataTable();
-
-            //Try to open JSON file for reading
-            try
-            {
-                var sourceJson = File.ReadAllText("quotes.json");
-                dataSet = JsonConvert.DeserializeObject<DataSet>(sourceJson);
-
-                DataTable dataQuotes = dataSet.Tables["quotes"];
-                if (dataQuotes.Rows.Count > 0)
-                {
-                    //Let's find some stuff to display
-                    string searchquery;
-                    searchquery = "material = '" + material + "'";
-                    DataRow[] dataRows = dataTable.Select(searchquery);
-                    if (dataRows.Length > 0)
-                    {
-                        dataTable = dataRows.CopyToDataTable();
-
-                        //Column Names
-                        //Need to confirm this is the correct order in our JSON
-                        //an update with the remaining columns once we do
-                        dataTable.Columns[0].ColumnName = "Customer ID";
-                        dataTable.Columns[1].ColumnName = "Customer Name";
-                        dataTable.Columns[2].ColumnName = "Date of Original Quote";
-
-                    }
-                    //If nothing in the search results, throw error
-                    else 
-                    {
-                        MessageBox.Show("No results found, check query and Json", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }
-
-            }
-            catch (JsonReaderException)
-            {
-                MessageBox.Show("The source Json file is corrputed or missing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return dataTable;
-
-        }
-
         //Getters and Setters
         //May need to add error handling depending on name types unless we are fine with numbers
         private void setCustomerName(string _name)
@@ -211,7 +164,7 @@ namespace MegaDesk1._0
                 throw (new Exception("Days must be between 3-14 days!"));
         }
 
-        public int GetProductionDdays()
+        public int GetProductionDays()
         {
             return productionDays;
         }
@@ -231,7 +184,7 @@ namespace MegaDesk1._0
             return completionDate;
         }
 
-        public static void GetRushOrder(List<int> prices)
+        public static void GetRushOrder()
         {            
             string path = @"rushOrderPrices.txt";
             List<int> integers = new List<int>();
@@ -249,14 +202,14 @@ namespace MegaDesk1._0
             }
             finally
             {
-                if (prices.Count == 9)
+                if (integers.Count == 9)
                 {
                     for (int x = 0; x < 3; x++)
                     {
                         for (int y = 0; y < 3; y++)
                         {
-                            rushPrices[x, y] = prices[0];
-                            prices.RemoveAt(0);
+                            rushPrices[x, y] = integers[0];
+                            integers.RemoveAt(0);
                         }
                     }
                 }

@@ -136,7 +136,9 @@
             this.Controls.Add(this.depthLabel);
             this.Controls.Add(this.nameLabel);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(257, 300);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(257, 300);
             this.Name = "DisplayQuote";
             this.Text = "Display Quote";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DisplayQuote_FormClosed);

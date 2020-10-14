@@ -213,7 +213,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameTextBox);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(255, 360);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(255, 360);
             this.Name = "AddQuote";
             this.Text = "Add Quote";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddQuote_FormClosed);

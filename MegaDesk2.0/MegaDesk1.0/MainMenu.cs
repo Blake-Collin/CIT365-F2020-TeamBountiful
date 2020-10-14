@@ -10,8 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
+using Newtonsoft.Json;
 
 namespace MegaDesk1._0
 {
@@ -20,53 +19,30 @@ namespace MegaDesk1._0
 
         //Public Variable of some kind list/arraylist/dictionary whatever. (Probably List)
         private static List<DeskQuote> quotes = new List<DeskQuote>();
+        private string quotesFile = @"quotes.json";
 
         public MainMenu()
         {
             InitializeComponent();
-            //Load JSon
-            var quotesFile = @"quotes.json";
-            List<DeskQuote> deskQuotes = new List<DeskQuote>();
-
-            // read existing quotes
-            if ( File.Exists(quotesFile))
-            {
-                using (StreamReader reader = new StreamReader(quotesFile))
-                {
-                    // load quotes
-                    string quotes = reader.ReadToEnd();
-
-                    if (quotes.Length >0)
-                    {
-                        // deserialize
-                        deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
-                    }
-
-                    // add a quote
-                    deskQuotes.Add(deskQuote);
-                }
-
-                // save
-                SaveQuotes(deskQuotes);
-            }
-            else
-            {
-                // create new quote list
-                deskQuotes = new List<DeskQuote> { deskQuote };
-
-                SaveQuotes(deskQuotes);
-            }
-
             
-            //*****
-        }
 
+            //Load in Rush Order Pricing
+            DeskQuote.GetRushOrder();
+
+            //Load JSon
+            if (File.Exists(quotesFile))
+            {
+                string json = File.ReadAllText(quotesFile);
+                List<DeskQuote> deser = JsonConvert.DeserializeObject<List<DeskQuote>>(json);
+                //Error checking maybe?
+                quotes = deser;
+            }
+        }
 
         public static List<DeskQuote> GetQuotes()
         {
             return quotes;
         }
-        
 
         private void addQuoteButton_Click(object sender, EventArgs e)
         {
@@ -93,12 +69,16 @@ namespace MegaDesk1._0
         }
 
         private void exitButton_Click(object sender, EventArgs e)
-        {
-            //Save JSON
-           
-
-            //********
+        {         
             Close();
+        }
+
+        private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            string json = JsonConvert.SerializeObject(quotes);
+            Console.WriteLine(json);
+            System.IO.File.WriteAllText(quotesFile, json);
         }
     }
 }

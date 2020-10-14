@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.PerformanceData;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace MegaDesk1._0
     }
 
 
+    [JsonObject(MemberSerialization.OptIn)]
     public class Desk
     {
         //CONSTANT VARIABLES
@@ -30,19 +32,32 @@ namespace MegaDesk1._0
         private static int MINIMUMDRAWER = 0;
 
         //Variables All private to protect them via functions
+        [JsonProperty]
         private int deskWidth;
+        [JsonProperty]
         private int deskDepth;
+        [JsonProperty]
         private int numOfDrawers;
+        [JsonProperty]
         private DeskMaterial material;
 
 
-        //Constructor
+        //Constructor        
         public Desk(int inWidth, int inDepth, int inDrawCount, DeskMaterial inMaterial)
         {
             setDeskWidth(inWidth);
             setDeskDepth(inDepth);
             setNumOfDrawers(inDrawCount);
             setMaterial(inMaterial);
+        }
+
+        [JsonConstructor]
+        public Desk(int deskWidth, int deskDepth, int numOfDrawers, int material)
+        {
+            setDeskWidth(deskWidth);
+            setDeskDepth(deskDepth);
+            setNumOfDrawers(numOfDrawers);
+            setMaterial((DeskMaterial)material);
         }
 
         //Default general creation

@@ -32,6 +32,8 @@
             this.viewQuotesButton = new System.Windows.Forms.Button();
             this.searchQuotes = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // addQuoteButton
@@ -74,19 +76,34 @@
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MegaDesk1._0.Properties.Resources.Desk1;
+            this.pictureBox1.Location = new System.Drawing.Point(160, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(183, 208);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 232);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.searchQuotes);
             this.Controls.Add(this.viewQuotesButton);
             this.Controls.Add(this.addQuoteButton);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(371, 271);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(371, 271);
             this.Name = "MainMenu";
             this.Text = "MegaDesk";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -97,6 +114,7 @@
         private System.Windows.Forms.Button viewQuotesButton;
         private System.Windows.Forms.Button searchQuotes;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
