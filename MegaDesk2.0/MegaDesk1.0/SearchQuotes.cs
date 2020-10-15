@@ -41,8 +41,7 @@ namespace MegaDesk1._0
             }
 
             dataGridSearchQuotes.DataSource = table;
-            dataGridSearchQuotes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridSearchQuotes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridSearchQuotes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;            
             dataGridSearchQuotes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
         }

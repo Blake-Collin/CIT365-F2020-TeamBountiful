@@ -26,8 +26,7 @@ namespace MegaDesk1._0
             }
 
             dataGridView.DataSource = table;
-            dataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;            
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView.AllowUserToAddRows = false;
         }
@@ -47,7 +46,10 @@ namespace MegaDesk1._0
             table.Columns.Add(new DataColumn("Quote Amount", typeof(decimal)));
             table.Columns.Add(new DataColumn("Date of Completition", typeof(DateTime)));
             table.Columns.Add(new DataColumn("Production Days", typeof(int)));
-            table.Columns.Add(new DataColumn("Desk", typeof(Desk)));
+            table.Columns.Add(new DataColumn("Desk Width", typeof(int)));
+            table.Columns.Add(new DataColumn("Desk Depth", typeof(int)));
+            table.Columns.Add(new DataColumn("Number of Drawers", typeof(int)));
+            table.Columns.Add(new DataColumn("Material", typeof(DeskMaterial)));            
 
             return table;
         }
@@ -59,7 +61,10 @@ namespace MegaDesk1._0
             row["Quote Amount"] = quote.GetQuoteAmount();
             row["Date of Completition"] = quote.GetCompletionDate();
             row["Production Days"] = quote.GetProductionDays();
-            row["Desk"] = quote.GetDesk();
+            row["Desk Width"] = quote.GetDesk().GetDeskWidth();
+            row["Desk Depth"] = quote.GetDesk().GetDeskDepth();
+            row["Number of Drawers"] = quote.GetDesk().GetNumOfDrawers();
+            row["Material"] = quote.GetDesk().GetDeskMaterial();
             return row;
         }
 
