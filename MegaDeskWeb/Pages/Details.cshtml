@@ -10,62 +10,78 @@
 <div>
     <h4>DeskQuote</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.customerName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.customerName)
-        </dd>
+    <dl class="card-columns">
+        <div style="break-inside: avoid; background-color: lightgray; border-radius: 15px;">
+            <dt class="col-sm-10">
+                @Html.DisplayNameFor(model => model.DeskQuote.customerName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeskQuote.customerName)
+            </dd>
+        </div>
+        
+        <div style="break-inside: avoid; background-color: lightgray; border-radius: 15px;">
+            <dt class="col-sm-10">
+                @Html.DisplayNameFor(model => model.DeskQuote.completionDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeskQuote.completionDate)
+            </dd>
+        </div>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.completionDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.completionDate)
-        </dd>
+        <div style="break-inside: avoid; background-color: lightgray; border-radius: 15px;">
+            <dt class="col-sm-10">
+                @Html.DisplayNameFor(model => model.DeskQuote.quoteAmount)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeskQuote.quoteAmount)
+            </dd>
+        </div>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.quoteAmount)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.quoteAmount)
-        </dd>
+        <div style="break-inside: avoid; background-color: lightgray; border-radius: 15px;">
+            <dt class="col-sm-10">
+                @Html.DisplayNameFor(model => model.DeskQuote.RushShipping.RushName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeskQuote.RushShipping.RushName)
+            </dd>
+        </div>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.RushShipping.RushName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.RushShipping.RushName)
-        </dd>
+        <div style="break-inside: avoid; background-color: lightgray; border-radius: 15px;">
+            <dt class="col-sm-10">
+                @Html.DisplayNameFor(model => model.DeskQuote.desk.deskDepth)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeskQuote.desk.deskDepth)
+            </dd>
+        </div>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.desk.deskDepth)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.desk.deskDepth)
-        </dd>
+        <div style="break-inside: avoid; background-color: lightgray; border-radius: 15px;">
+            <dt class="col-sm-10">
+                @Html.DisplayNameFor(model => model.DeskQuote.desk.deskWidth)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeskQuote.desk.deskWidth)
+            </dd>
+        </div>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.desk.deskWidth)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.desk.deskWidth)
-        </dd>
+        <div style="break-inside: avoid; background-color: lightgray; border-radius: 15px;">
+            <dt class="col-sm-10">
+                @Html.DisplayNameFor(model => model.DeskQuote.desk.numOfDrawers)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeskQuote.desk.numOfDrawers)
+            </dd>
+        </div>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.desk.numOfDrawers)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.desk.numOfDrawers)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.desk.material.DeskMaterialName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.desk.material.DeskMaterialName)
-        </dd>
+        <div style="break-inside: avoid; background-color: lightgray; border-radius: 15px;">
+            <dt class="col-sm-10">
+                @Html.DisplayNameFor(model => model.DeskQuote.desk.material.DeskMaterialName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeskQuote.desk.material.DeskMaterialName)
+            </dd>
+        </div>
     </dl>
 </div>
 <div>
