@@ -12,61 +12,64 @@
 <h1>Index</h1>
 
 <hr />
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<form>
-    <p>       
-        Title: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
+<div class="complete">
+    <p>
+        <a asp-page="Create">Create New</a>
     </p>
-</form>
+    <form>
+        <p>
+            Title: <input type="text" asp-for="SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
-                   asp-route-currentString="@Model.SearchString">
-                    @Html.DisplayNameFor(model => model.DeskQuote[0].customerName)
-                </a>                
-            </th>
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
-                   asp-route-currentString="@Model.SearchString">
-                    @Html.DisplayNameFor(model => model.DeskQuote[0].completionDate)
-                </a>            
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].quoteAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].RushShipping)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.DeskQuote) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.customerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.completionDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.quoteAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RushShipping.RushName)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                       asp-route-currentString="@Model.SearchString">
+                        @Html.DisplayNameFor(model => model.DeskQuote[0].customerName)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                       asp-route-currentString="@Model.SearchString">
+                        @Html.DisplayNameFor(model => model.DeskQuote[0].completionDate)
+                    </a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].quoteAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].RushShipping)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.DeskQuote)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.customerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.completionDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quoteAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RushShipping.RushName)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
