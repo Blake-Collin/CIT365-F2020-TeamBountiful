@@ -28,6 +28,8 @@ a {
 -------------------------------------------------- */
 html {
   font-size: 14px;
+  
+
 }
 @media (min-width: 768px) {
   html {
@@ -72,11 +74,48 @@ body {
 /*
     full site workup for text font - brycen
 */
+main {
+
+}
+.table {
+    border-collapse: separate;
+    margin-top: 1.5rem;
+
+}
+html {
+    background-color: #f0f0f0;
+    background-image: url('../images/desk image.jpg');
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 70%;
+
+    background-size: 45rem, 20rem;
+
+}
 h1 {
     font-family: 'Crimson Text', serif;
-}
+    background-color: #9fa9a3;
+    color: #fff;
+    font-size: 2.5rem;
+    padding-top: 1.5rem;
+    margin-top: .5rem;
 
+    text-align: center;
+}
+a {
+    color: #9fa9a3;
+    font-style: oblique;
+}
 body {
     font-family: 'Varela', sans-serif;
+    background-color: #f0f0f0;
+
 }
+
+header {
+    color: #9fa9a3;
+
+}
+
+
 
