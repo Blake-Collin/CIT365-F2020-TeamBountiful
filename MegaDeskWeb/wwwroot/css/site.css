@@ -82,15 +82,33 @@ main {
     margin-top: 1.5rem;
 
 }
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: .5px solid #c5d5c5;
+    
+}
+td{
+    background-color: #c5d5c5;
+    padding: .75rem;
+}
+dt.col-sm-2 {
+    padding: .75rem;
+}
+dd.col-sm-10 {
+    background-color: #c5d5c5;
+    padding: .75rem;
+}
+.table td, .table th {
+    padding: .75rem;
+    border-top:.5px solid #c5d5c5;
+}
 html {
     background-color: #f0f0f0;
     background-image: url('../images/desk image.jpg');
     background-repeat: no-repeat;
     background-position-x: 50%;
-    background-position-y: 70%;
-
+    background-position-y: 85%;
     background-size: 45rem, 20rem;
-
 }
 h1 {
     font-family: 'Crimson Text', serif;
@@ -99,23 +117,36 @@ h1 {
     font-size: 2.5rem;
     padding-top: 1.5rem;
     margin-top: .5rem;
-
     text-align: center;
 }
+form p {
+    font-weight: bold;
+    font-style: oblique;
+}
 a {
-    color: #9fa9a3;
+    color: black;
     font-style: oblique;
 }
 body {
     font-family: 'Varela', sans-serif;
     background-color: #f0f0f0;
-
 }
 
 header {
     color: #9fa9a3;
-
 }
 
+.btn-danger {
+    color: #fff;
+    background-color: #9fa9a3;
+    border-color: #c5d5c5;
+}
+.btn{
+    transition: color .15s ease-in-out, background-color
+}
+
+.container {
+    max-width: 1450px;
+}
 
 
