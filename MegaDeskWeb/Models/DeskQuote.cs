@@ -29,7 +29,7 @@ namespace MegaDeskWeb.Models
         public Nullable<DateTime> startDate { get; set; }
 
         [BindProperty]
-        [Display(Name = "Rush Shipping")]
+        [Display(Name = "Shipping Method")]
         public RushShipping RushShipping { get; set; }
 
      
