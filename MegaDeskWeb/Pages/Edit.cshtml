@@ -25,6 +25,10 @@
                 <span asp-validation-for="DeskQuote.customerName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="DeskQuote.desk.material" class="control-label"></label>
+                <select asp-for="@Model.matieralID" class="form-control" asp-items="@Model.deskMaterials"></select>
+            </div>
+            <div class="form-group">
                 <label asp-for="DeskQuote.desk.deskWidth" class="control-label"></label>
                 <input asp-for="DeskQuote.desk.deskWidth" class="form-control" />
                 <span asp-validation-for="DeskQuote.desk.deskWidth" class="text-danger"></span>
@@ -38,10 +42,6 @@
                 <label asp-for="DeskQuote.desk.numOfDrawers" class="control-label"></label>
                 <input asp-for="DeskQuote.desk.numOfDrawers" class="form-control" />
                 <span asp-validation-for="DeskQuote.desk.numOfDrawers" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeskQuote.desk.material" class="control-label"></label>
-                <select asp-for="@Model.matieralID" class="form-control" asp-items="@Model.deskMaterials"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DeskQuote.RushShipping" class="control-label"></label>
