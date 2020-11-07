@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,5 +11,7 @@ namespace MegaDeskWeb.Models
         public int ID { get; set; }
         public string DeskMaterialName { get; set; }
         public decimal DeskMaterialPrice { get; set; }
+        
+        
     }
 }

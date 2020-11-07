@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\images\megadeskwek_laminate.png" />
+    <None Include="wwwroot\images\megadeskwek_oak.png" />
+    <None Include="wwwroot\images\megadeskwek_pine.png" />
+    <None Include="wwwroot\images\megadeskwek_rosewood.png" />
+    <None Include="wwwroot\images\megadeskwek_veneer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">

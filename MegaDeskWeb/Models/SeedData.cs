@@ -24,26 +24,31 @@ namespace MegaDeskWeb.Models
                         {
                             DeskMaterialName = "Oak",
                             DeskMaterialPrice = 200,
+                            
                         },
                         new DeskMaterial
                         {
                             DeskMaterialName = "Laminate",
                             DeskMaterialPrice = 100,
+                           
                         },
                         new DeskMaterial
                         {
                             DeskMaterialName = "Pine",
                             DeskMaterialPrice = 50,
+                            
                         },
                         new DeskMaterial
                         {
                             DeskMaterialName = "Rosewood",
                             DeskMaterialPrice = 300,
+                            
                         },
                         new DeskMaterial
                         {
                             DeskMaterialName = "Veneer",
                             DeskMaterialPrice = 125,
+                            
                         }
                         );
                 }
