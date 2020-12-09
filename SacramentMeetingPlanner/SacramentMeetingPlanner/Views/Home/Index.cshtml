@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Sacrament Meeting Planner</h1>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Parkwood Ward Planner</h2>
+        <p>
+            Please make sure to contact people before marking them down for tasks.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>New Meeting Setup</h2>
+        <p>Please make sure to verify with the bishopric before creating new meetings. </p>
+        <p><a class="btn btn-default" asp-controller="Meetings" asp-action="Create">New Meeting &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Requirements</h2>
+        <p>For each meeting you will be required to provide a Date, Opening Sacrament & Closing Hymns, Opening & Closing Prayers, & any Speakers if needed.</p>
+    </div>
+</div>
