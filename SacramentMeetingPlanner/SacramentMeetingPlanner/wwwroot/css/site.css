@@ -79,7 +79,3 @@ body, table {
     text-decoration: underline;
     text-decoration-color: white;
 }
-table{
-    display: table;
-    border-spacing: 10px;
-}
