@@ -5,124 +5,129 @@
 }
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<head>
+    <link rel="stylesheet" href="~/css/meetings.css" type="text/css" />
+</head>
+<body id="HomepageBody">
+    <div id="myBody">
+        <h1>Edit</h1>
 
-<h1>Edit</h1>
-
-<h4>Meeting</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ID" />
-            <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" value="@Model.Date.Date.ToString("yyyy-MM-dd")" />
-                <span asp-validation-for="Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Conducting" class="control-label"></label>
-                <input asp-for="Conducting" class="form-control" />
-                <span asp-validation-for="Conducting" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OpeningHymn" class="control-label"></label>
-                <input asp-for="OpeningHymn" class="form-control" />
-                <span asp-validation-for="OpeningHymn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Invocation" class="control-label"></label>
-                <input asp-for="Invocation" class="form-control" />
-                <span asp-validation-for="Invocation" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SacramentHymn" class="control-label"></label>
-                <input asp-for="SacramentHymn" class="form-control" />
-                <span asp-validation-for="SacramentHymn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SacramentPrayer" class="control-label"></label>
-                <input asp-for="SacramentPrayer" class="form-control" />
-                <span asp-validation-for="SacramentPrayer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClosingHymn" class="control-label"></label>
-                <input asp-for="ClosingHymn" class="form-control" />
-                <span asp-validation-for="ClosingHymn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Benediction" class="control-label"></label>
-                <input asp-for="Benediction" class="form-control" />
-                <span asp-validation-for="Benediction" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <table id="table">
-                    <tr>
-                        <th class="d-md-table-cell">Speaker</th>
-                        <th class="d-md-table-cell">Topic</th>
-                    </tr>
-                    @{  int counter = 0;
-                        foreach (Speaker s in Model.Speakers)
-                        {
-                            <tr id="tablerow@(counter)">
-                                <td>
-                                    <input type="text" class="form-control text-box single-line" data-val="true" data-val-required="This is required!" data-val-regex="The field Name: must start with a Uppercase Letter and contain only letters!" data-val-length-max="50" maxlength="50" data-val-regex-pattern="^[A-Z]+[a-zA-Z\' -\s]*$" id="Speakers[@counter].Name" name="Speakers[@counter].Name" value="@s.Name" required="required" />
-                                    <span class="text-danger field-validation-valid" data-valmsg-replace="true" data-valmsg-for="Speakers[@counter].Name"></span>                                    
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control text-box single-line" data-val="true" data-val-required="This is required!" data-val-regex="The field Name: must start with a Uppercase Letter and contain only letters!" data-val-length-max="50" maxlength="50" data-val-regex-pattern="^[A-Z]+[a-zA-Z\' -\s]*$" id="Speakers[@counter].Topic" name="Speakers[@counter].Topic" value="@s.Topic" required="required" />
-                                    <span class="text-danger field-validation-valid" data-valmsg-replace="true" data-valmsg-for="Speakers[@counter].Topic"></span>
-                                </td>
+        <h4>Meeting</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="ID" />
+                    <div class="form-group">
+                        <label asp-for="Date" class="control-label"></label>
+                        <input asp-for="Date" class="form-control" value="@Model.Date.Date.ToString("yyyy-MM-dd")" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Conducting" class="control-label"></label>
+                        <input asp-for="Conducting" class="form-control" />
+                        <span asp-validation-for="Conducting" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OpeningHymn" class="control-label"></label>
+                        <input asp-for="OpeningHymn" class="form-control" />
+                        <span asp-validation-for="OpeningHymn" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Invocation" class="control-label"></label>
+                        <input asp-for="Invocation" class="form-control" />
+                        <span asp-validation-for="Invocation" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SacramentHymn" class="control-label"></label>
+                        <input asp-for="SacramentHymn" class="form-control" />
+                        <span asp-validation-for="SacramentHymn" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SacramentPrayer" class="control-label"></label>
+                        <input asp-for="SacramentPrayer" class="form-control" />
+                        <span asp-validation-for="SacramentPrayer" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClosingHymn" class="control-label"></label>
+                        <input asp-for="ClosingHymn" class="form-control" />
+                        <span asp-validation-for="ClosingHymn" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Benediction" class="control-label"></label>
+                        <input asp-for="Benediction" class="form-control" />
+                        <span asp-validation-for="Benediction" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <table id="table">
+                            <tr>
+                                <th class="d-md-table-cell">Speaker</th>
+                                <th class="d-md-table-cell">Topic</th>
                             </tr>
-                            counter++;
-                        }
-                        <input type="hidden" id="RowCount" value="@counter" />
-                    }
+                            @{ int counter = 0;
+                                foreach (Speaker s in Model.Speakers)
+                                {
+                                    <tr id="tablerow@(counter)">
+                                        <td>
+                                            <input type="text" class="form-control text-box single-line" data-val="true" data-val-required="This is required!" data-val-regex="The field Name: must start with a Uppercase Letter and contain only letters!" data-val-length-max="50" maxlength="50" data-val-regex-pattern="^[A-Z]+[a-zA-Z\' -\s]*$" id="Speakers[@counter].Name" name="Speakers[@counter].Name" value="@s.Name" required="required" />
+                                            <span class="text-danger field-validation-valid" data-valmsg-replace="true" data-valmsg-for="Speakers[@counter].Name"></span>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control text-box single-line" data-val="true" data-val-required="This is required!" data-val-regex="The field Name: must start with a Uppercase Letter and contain only letters!" data-val-length-max="50" maxlength="50" data-val-regex-pattern="^[A-Z]+[a-zA-Z\' -\s]*$" id="Speakers[@counter].Topic" name="Speakers[@counter].Topic" value="@s.Topic" required="required" />
+                                            <span class="text-danger field-validation-valid" data-valmsg-replace="true" data-valmsg-for="Speakers[@counter].Topic"></span>
+                                        </td>
+                                    </tr>
+                                    counter++;
+                                }
+                                <input type="hidden" id="RowCount" value="@counter" />
+                            }
 
-                </table>
-                <button id="add" type="button" class="btn btn-primary">Add</button> <button id="remove" type="button" class="btn btn-primary">Remove</button>
+                        </table>
+                        <button id="add" type="button" class="btn btn-primary">Add</button> <button id="remove" type="button" class="btn btn-primary">Remove</button>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <br />
-            <br />
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-<script type="text/javascript">
-    //var counter = {i.ToString();};    
-    var counter = document.getElementById('RowCount').value;
-    console.log("Counter: " + counter);
-    $('#remove').click(function() {
-        if (counter > -1) {
-            console.log('#tablerow' + (counter - 1));
+</body>
+    <script type="text/javascript">
+        //var counter = {i.ToString();};
+        var counter = document.getElementById('RowCount').value;
+        console.log("Counter: " + counter);
+        $('#remove').click(function () {
+            if (counter > -1) {
+                console.log('#tablerow' + (counter - 1));
                 $('#tablerow' + (counter - 1)).remove();
                 if (counter != 0) {
                     counter--;
                 }
             }
             return false;
-    });
-    $('#add').click(function () {
-        $('<tr id="tablerow' + counter + '"><td>' +
-            '<input type="text" class="form-control text-box single-line" data-val="true" data-val-required="This is required!" data-val-regex="The field Name: must start with a Uppercase Letter and contain only letters!" data-val-length-max="50" maxlength="50" data-val-regex-pattern="^[A-Z]+[a-zA-Z\' -\s]*$" id="Speakers[' + counter + '].Name" name="Speakers[' + counter + '].Name" value="" required="required" />' +
-            '<span class="text-danger field-validation-valid" data-valmsg-replace="true" data-valmsg-for="Speakers[' + counter + '].Name"></span>' +
-            '</td>' +
-            '<td>' +
-            '<input type="text" class="form-control text-box single-line" data-val="true" data-val-required="This is required!" data-val-regex="The field Topic: must start with a Uppercase Letter and contain only letters!" data-val-length-max="50" maxlength="50" data-val-regex-pattern="^[A-Z]+[a-zA-Z\' -\s]*$" id="Speakers[' + counter + '].Topic" name="Speakers[' + counter + '].Topic" value="" required="required" />' +
-            '<span class="text-danger field-validation-valid" data-valmsg-replace="true" data-valmsg-for="Speakers[' + counter + '].Topic"></span>' +
-            '</td>' +
-            '</tr>').appendTo('#table');
-        counter++;
-        return false;
-    });
-</script>
+        });
+        $('#add').click(function () {
+            $('<tr id="tablerow' + counter + '"><td>' +
+                '<input type="text" class="form-control text-box single-line" data-val="true" data-val-required="This is required!" data-val-regex="The field Name: must start with a Uppercase Letter and contain only letters!" data-val-length-max="50" maxlength="50" data-val-regex-pattern="^[A-Z]+[a-zA-Z\' -\s]*$" id="Speakers[' + counter + '].Name" name="Speakers[' + counter + '].Name" value="" required="required" />' +
+                '<span class="text-danger field-validation-valid" data-valmsg-replace="true" data-valmsg-for="Speakers[' + counter + '].Name"></span>' +
+                '</td>' +
+                '<td>' +
+                '<input type="text" class="form-control text-box single-line" data-val="true" data-val-required="This is required!" data-val-regex="The field Topic: must start with a Uppercase Letter and contain only letters!" data-val-length-max="50" maxlength="50" data-val-regex-pattern="^[A-Z]+[a-zA-Z\' -\s]*$" id="Speakers[' + counter + '].Topic" name="Speakers[' + counter + '].Topic" value="" required="required" />' +
+                '<span class="text-danger field-validation-valid" data-valmsg-replace="true" data-valmsg-for="Speakers[' + counter + '].Topic"></span>' +
+                '</td>' +
+                '</tr>').appendTo('#table');
+            counter++;
+            return false;
+        });
+    </script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
